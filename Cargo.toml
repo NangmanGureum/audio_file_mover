@@ -7,3 +7,5 @@ edition = "2018"
 
 [dependencies]
 rodio = "0.14.0"
+hound = "3.4.0"
+claxon = "0.4.3"
