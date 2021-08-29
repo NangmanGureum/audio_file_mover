@@ -9,7 +9,6 @@ And it's useful for musicians, instrument players, and most jobs which are relat
 
 ## Todo
 
-- Make backend
-- Playback System
-- File Directory Viewer
 - Make GUI frontend
+  - File Directory Viewer
+  - Audio Player
