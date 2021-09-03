@@ -1,4 +1,5 @@
 use claxon::FlacReader;
+use druid::Data;
 use hound::{SampleFormat, WavReader};
 use rodio::{source::Source, Decoder, OutputStreamHandle};
 use std::fs::File;
@@ -11,7 +12,7 @@ use std::path::Path;
 // 2. Get audio file info (e. g.: bits, frequencies, channels...)
 // 3. Play the file
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Data)]
 pub struct AudioFile {
     pub file_path: String,
     pub bits: Option<Bits>,
@@ -19,7 +20,7 @@ pub struct AudioFile {
     pub channels: u8,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Data, PartialEq)]
 pub enum Bits {
     Eight,
     Sixteen,
@@ -97,6 +98,6 @@ impl AudioFile {
         let buf = BufReader::new(File::open(&audio_file.file_path).unwrap());
         let audio_src = Decoder::new(buf).unwrap();
 
-        &stream_handle.play_raw(audio_src.convert_samples());
+        stream_handle.play_raw(audio_src.convert_samples());
     }
 }
